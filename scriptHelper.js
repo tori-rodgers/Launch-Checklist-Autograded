@@ -1,10 +1,9 @@
-// Write your helper functions here!
 
 require('cross-fetch/polyfill');
 
-function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
+function addDestinationInfo(document, name, diameter, star, distance, moons, image) {
     const missionTarget = document.getElementById("missionTarget");
-    
+
     missionTarget.innerHTML = `<h2>Mission Destination</h2>
                             <ol>
                                 <li>Name: ${name} </li>
@@ -13,7 +12,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                                 <li>Distance from Earth: ${distance} </li>
                                 <li>Number of Moons: ${moons} </li>
                             </ol>
-                            <img src="${imageUrl}">`;
+                            <img src="${image}">`;
 }
   
  function validateInput(testInput) {
@@ -82,22 +81,12 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  }
  
  async function myFetch() {
-     try {
-        const response = await fetch("https://handlers.education.launchcode.org/static/planets.json");
-        
-        if(!response.ok){
-            throw new Error("Could not fetch resource");
-        }
-
-        const planetsReturned = await response.json();
-        console.log(planetsReturned);
-
-     } catch (error) {
-        console.error(error);
-     }
- 
- 
-     return planetsReturned;
+    let planetsReturned = fetch(
+        "https://handlers.education.launchcode.org/static/planets.json"
+      ).then(function (response) {
+        return response.json();
+      });
+      return planetsReturned;
  }
  
  function pickPlanet(planets) {
