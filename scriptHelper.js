@@ -102,6 +102,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  }
  
  function pickPlanet(planets) {
+    let index = Math.floor(Math.random() * planets.length);
+    return planets[index];
  }
  
  module.exports.addDestinationInfo = addDestinationInfo;
