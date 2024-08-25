@@ -17,26 +17,26 @@ window.addEventListener("load", function() {
       formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
     }); 
     
+
     let listedPlanets;
-    
-    let listedPlanetsResponse = myFetch();
+    let listedPlanetsResponse = myFetch(); // assign response from myFetch()
 
     listedPlanetsResponse.then(function (result) {
         listedPlanets = result;
-        console.log(listedPlanets);
+            // listedPlanets is now assigned the result of line 22 (response from myFetch(), which is the JSON)
     }).then(function () {
-        console.log(listedPlanets);
-        
-        let randomPlanet = pickPlanet(listedPlanets);
-        addDestinationInfo(
-            document,
-            randomPlanet.name,
-            randomPlanet.diameter,
-            randomPlanet.star,
-            randomPlanet.distance,
-            randomPlanet.moons,
-            randomPlanet.image
-            )
+            let randomPlanet = pickPlanet(listedPlanets);
+                // randomPlanet assigned the result of passing listedPlanets (the JSON) to pickPlanet()
+            addDestinationInfo(
+                document,
+                randomPlanet.name,
+                randomPlanet.diameter,
+                randomPlanet.star,
+                randomPlanet.distance,
+                randomPlanet.moons,
+                randomPlanet.image
+                //randomPlanet.xxx accesses the keys in the JSON object and changes the HTML through 
+                        // the addDestinationInfo() function
+        )
     })
-    
  });

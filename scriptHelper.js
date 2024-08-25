@@ -2,6 +2,7 @@
 require('cross-fetch/polyfill');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, image) {
+    // Object for mission target 
     const missionTarget = document.getElementById("missionTarget");
 
     missionTarget.innerHTML = `<h2>Mission Destination</h2>
@@ -28,7 +29,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
    
  
  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   
+    // Objects for formSubmission parameters
     let pilotStatus = document.getElementById('pilotStatus');
     let copilotStatus = document.getElementById('copilotStatus');
     let cargoStatus = document.getElementById('cargoStatus');
@@ -39,9 +40,10 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     // all Empty
     if (validateInput(pilot) === 'Empty' || validateInput(copilot) === 'Empty' || validateInput(fuelLevel) === 'Empty' ||validateInput(cargoLevel) === 'Empty') {
         alert("Please enter information for all fields.");
-    // wrong type
+         // entered number instead of name
     } else if ( validateInput(pilot) === 'Is a Number' || validateInput(copilot) === 'Is a Number') {
         alert("Please enter a valid name.");
+        // entered letters instead of numbers
     } else if (validateInput(fuelLevel) === 'Not a Number' ||validateInput(cargoLevel) === 'Not a Number') {
         alert("Please enter a valid number.");
     } else {
@@ -75,9 +77,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
             launchStatus.innerHTML = "Shuttle is Ready for Launch";
             launchStatus.style.color = "green";
         }
-
     }
-    
  }
  
  async function myFetch() {
