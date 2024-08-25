@@ -83,10 +83,20 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  }
  
  async function myFetch() {
-     let planetsReturned;
+     try {
+        const response = await fetch("https://handlers.education.launchcode.org/static/planets.json");
+        
+        if(!response.ok){
+            throw new Error("Could not fetch resource");
+        }
+
+        const planetsReturned = await response.json();
+        console.log(planetsReturned);
+
+     } catch (error) {
+        console.error(error);
+     }
  
-     planetsReturned = await fetch().then( function(response) {
-         });
  
      return planetsReturned;
  }
