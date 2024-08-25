@@ -42,8 +42,10 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     if (validateInput(pilot) === 'Empty' || validateInput(copilot) === 'Empty' || validateInput(fuelLevel) === 'Empty' ||validateInput(cargoLevel) === 'Empty') {
         alert("Please enter information for all fields.");
     // wrong type
-    } else if ( validateInput(pilot) === 'Is a Number' || validateInput(copilot) === 'Is a Number' || validateInput(fuelLevel) === 'Not a Number' ||validateInput(cargoLevel) === 'Not a Number') {
-        alert("Please enter a valid input.");
+    } else if ( validateInput(pilot) === 'Is a Number' || validateInput(copilot) === 'Is a Number') {
+        alert("Please enter a valid name.");
+    } else if (validateInput(fuelLevel) === 'Not a Number' ||validateInput(cargoLevel) === 'Not a Number') {
+        alert("Please enter a valid number.");
     } else {
 
         let fuelReady = false;
